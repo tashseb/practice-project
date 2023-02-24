@@ -3,10 +3,11 @@ const app = Vue.createApp({
     return {
       showBooks: true,
       books: [
-        { title: 'The Hunger Games', author: 'Suzanne Collins' },
-        { title: 'Fifty Shades of Gray', author: 'E.L James' },
-        { title: 'El Filibusterismo', author: 'Jose Rizal' },
+        { title: 'The Hunger Games', author: 'Suzanne Collins', isFav: true },
+        { title: 'Fifty Shades of Gray', author: 'E.L James', isFav: true },
+        { title: 'El Book', author: 'Jose Rizal', isFav: false },
       ],
+      url: 'https://github.com/tashseb',
       x: 0,
       y: 0
     }

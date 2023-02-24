@@ -15,6 +15,30 @@
       margin: 20px;
       display: inline-block;
     }
+    body {
+      background: #eee;
+      max-width: 960px;
+      margin: 20px auto;
+    }
+    p, h3, ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style-type: none;
+      background: white;
+      margin: 20px auto;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    li.fav {
+      background: pink;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -22,8 +46,9 @@
 
   <div id="app">
     <div v-if="showBooks">
+      <a v-bind:href="url">a url</a>
       <ul>
-        <li v-for="book in books">
+        <li v-for="book in books" :class="{ fav: book.isFav }">
           <h3>{{ book.title }}</h3>
           <p>{{ book.author }}</p>
         </li>
