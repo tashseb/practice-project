@@ -48,7 +48,7 @@
     <div v-if="showBooks">
       <a v-bind:href="url">a url</a>
       <ul>
-        <li v-for="book in books" :class="{ fav: book.isFav }">
+        <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleBook(book)">
           <h3>{{ book.title }}</h3>
           <p>{{ book.author }}</p>
         </li>
