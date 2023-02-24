@@ -2,9 +2,11 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: true,
-      title: 'The Final Empire',
-      author: 'Brandon Lee',
-      age: 35,
+      books: [
+        { title: 'The Hunger Games', author: 'Suzanne Collins' },
+        { title: 'Fifty Shades of Gray', author: 'E.L James' },
+        { title: 'El Filibusterismo', author: 'Jose Rizal' },
+      ],
       x: 0,
       y: 0
     }
