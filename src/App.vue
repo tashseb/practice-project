@@ -4,7 +4,7 @@
     <button @click="toggleModalForm()">Show Form</button>
     <p>Welcome</p>
     <button @click="toggleModal()">Open MODAL</button>
-    <div v-if="showModal">
+    <teleport to=".modal" v-if="showModal">
       <ModalOption theme="sale" @close="toggleModal">
         <h1>Dyson Airwrap</h1>
         <p>You'll buy it after your three months probationary period.</p>
@@ -12,7 +12,7 @@
           <a href="#">Some Link</a>
         </template>
       </ModalOption>
-    </div>
+    </teleport>
     <div v-if="showModalForm">
       <ModalOption @close="toggleModalForm">
         <h1>This is the second modal</h1>
