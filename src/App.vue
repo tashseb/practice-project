@@ -2,8 +2,11 @@
   <div class="app">
     <p>{{ name }} - {{ age }}</p>
     <button @click="changeName('Zelda')">change name</button>
-    <button @click="changeAge('30')">change age</button>
-    <ModalOption :header="header" :text="text" />
+    <p>Welcome</p>
+    <button @click="toggleModal()">Open modal</button>
+    <div v-if="showModal">
+      <ModalOption :header="header" :text="text" theme="sale" @close="toggleModal"/>
+    </div>
   </div>
 </template>
 
@@ -19,7 +22,8 @@ export default defineComponent({
       name: 'Link',
       age: 25 as string | number,
       header: 'Sign up for free!',
-      text: 'This is a text that is supposed to describe the header.'
+      text: 'This is a text that is supposed to describe the header.',
+      showModal: false
     }
   },
   methods: {
@@ -30,6 +34,9 @@ export default defineComponent({
     changeAge(age: number | string) {
       this.age = age
       return age
+    },
+    toggleModal() {
+      this.showModal = !this.showModal
     }
   }
 });
