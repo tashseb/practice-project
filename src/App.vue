@@ -3,19 +3,23 @@
     <p>{{ name }} - {{ age }}</p>
     <button @click="changeName('Zelda')">change name</button>
     <button @click="changeAge('30')">change age</button>
+    <ModalOption :header="header" :text="text" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ModalOption from './components/ModalOption.vue'
 
 export default defineComponent({
   name: 'App',
-  components: {},
+  components: { ModalOption },
   data() {
     return {
       name: 'Link',
-      age: 25 as string | number
+      age: 25 as string | number,
+      header: 'Sign up for free!',
+      text: 'This is a text that is supposed to describe the header.'
     }
   },
   methods: {
