@@ -1,9 +1,24 @@
 <template>
   <div class="app">
     <p>{{ name }} - {{ age }}</p>
-    <button @click="changeName('Zelda')">change name</button>
-    <button @click="changeAge('30')">change age</button>
-    <ModalOption :header="header" :text="text" />
+    <button @click="toggleModalForm()">Show Form</button>
+    <p>Welcome</p>
+    <button @click="toggleModal()">Open MODAL</button>
+    <teleport to=".modal" v-if="showModal">
+      <ModalOption theme="sale" @close="toggleModal">
+        <h1>Dyson Airwrap</h1>
+        <p>You'll buy it after your three months probationary period.</p>
+        <template v-slot:links>
+          <a href="#">Some Link</a>
+        </template>
+      </ModalOption>
+    </teleport>
+    <div v-if="showModalForm">
+      <ModalOption @close="toggleModalForm">
+        <h1>This is the second modal</h1>
+      </ModalOption>
+
+    </div>
   </div>
 </template>
 
@@ -18,8 +33,8 @@ export default defineComponent({
     return {
       name: 'Link',
       age: 25 as string | number,
-      header: 'Sign up for free!',
-      text: 'This is a text that is supposed to describe the header.'
+      showModal: false,
+      showModalForm: false
     }
   },
   methods: {
@@ -30,7 +45,14 @@ export default defineComponent({
     changeAge(age: number | string) {
       this.age = age
       return age
+    },
+    toggleModal() {
+      this.showModal = !this.showModal
+    },
+    toggleModalForm() {
+      this.showModalForm = !this.showModalForm
     }
+
   }
 });
 </script>
