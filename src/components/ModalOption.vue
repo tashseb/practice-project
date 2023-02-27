@@ -1,11 +1,8 @@
 <template>
-  <div class="backdrop" @click="closeModal">
+  <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <div class="button-close">
-        <button @click="closeModal">X</button>
-      </div>
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <slot></slot>
+      <slot name="links"></slot>
     </div>
   </div>>
 </template>
@@ -13,7 +10,7 @@
 <script lang="ts">
 
 export default {
-  props: ['header', 'text', 'theme'],
+  props: ['theme'],
   methods: {
     closeModal() {
       this.$emit('close')
@@ -47,10 +44,5 @@ export default {
 
   .modal.sale h1 {
     color: white;
-  }
-
-  .button-close {
-    display: flex;
-    justify-content: right;
   }
 </style>
